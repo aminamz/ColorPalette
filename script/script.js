@@ -5,7 +5,6 @@ const copyBtns = document.querySelectorAll(".copy");
 
 const lockDivs = [];
 
-console.log(copyBtns);
 
 const getRandomHexColor = () => {
   const hex = Math.floor(Math.random() * 0xffffff).toString(16);
@@ -55,4 +54,3 @@ lockImage.forEach((item) => item.addEventListener("click", lockHandler));
 copyBtns.forEach((item) => item.addEventListener("click", copyText));
 btnColorGenerator.addEventListener("click", paletteGenerator);
 
-// navigator.clipboard.writeText('')
