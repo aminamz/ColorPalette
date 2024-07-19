@@ -1,7 +1,11 @@
 const divs = document.querySelectorAll(".col");
 const btnColorGenerator = document.querySelector(".color-generator");
 const lockImage = document.querySelectorAll(".lock-image");
+const copyBtns = document.querySelectorAll(".copy");
+
 const lockDivs = [];
+
+console.log(copyBtns);
 
 const getRandomHexColor = () => {
   const hex = Math.floor(Math.random() * 0xffffff).toString(16);
@@ -25,6 +29,14 @@ const lockHandler = (e) => {
   }
 };
 
+const copyText = (e) => {
+  e.stopPropagation();
+  //   previousElementSibling
+  const { previousElementSibling: element } = e.target.parentNode;
+  navigator.clipboard.writeText(element.innerText);
+  alert(`Hex Code ("${element.innerText}") Copied To Clipboard!`);
+};
+
 const changeColorFunc = (element) => {
   const [{ children }] = element.children;
   const newColor = getRandomHexColor();
@@ -40,4 +52,7 @@ const paletteGenerator = () => {
 
 divs.forEach((item) => item.addEventListener("click", clickHandler));
 lockImage.forEach((item) => item.addEventListener("click", lockHandler));
+copyBtns.forEach((item) => item.addEventListener("click", copyText));
 btnColorGenerator.addEventListener("click", paletteGenerator);
+
+// navigator.clipboard.writeText('')
